@@ -26,18 +26,10 @@ if the api starts successfully, the terminal will print out the following
     $ yarn or npm install 
     $ yarn start or npm start
     
-If the frontend starts successfully, you will see the following in your terminal
-
-    Compiled successfully!
-    
     You can now view frontend in the browser.
     
-      Local:            http://localhost:2370
-      On Your Network:  http://192.168.8.103:2370
+      Local:            http://localhost:2000
     
-    Note that the development build is not optimized.
-    To create a production build, use yarn build.
-
 **Frontend Url:** `http://localhost:2370` 
 
 ## JA

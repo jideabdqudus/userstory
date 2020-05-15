@@ -15,7 +15,7 @@ const App = () => {
             ) : (
               <Redirect
                 to={{
-                  pathname: "/login",
+                  pathname: "/login", 
                   state: { referer: window.location.pathname },
                 }}
               />
