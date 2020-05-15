@@ -11,9 +11,6 @@ const PageTitle = (props) => {
   return (
     <Container className="page-title mb-4">
       <Row>
-        <Col xl={12} md={7}>
-          <h1 className="mb-2 mb-md-0">{title}</h1>
-        </Col>
         <Col xl={12} md={5} className="text-md-right">
           {button}
         </Col>

@@ -15,6 +15,7 @@ import {
   UncontrolledDropdown,
 } from "reactstrap";
 import { Logo } from ".";
+import Sidebar from "./Sidebar"
 const Header = ({ fullName, logout }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
@@ -23,7 +24,6 @@ const Header = ({ fullName, logout }) => {
     
     <header className="header shadow-sm py-2 mb-4">
       <Container>
-      
         <Row>
           <Navbar light expand="md" className={"w-100"}>
             <Link to={"/dashboard"}>

@@ -113,22 +113,21 @@ const Stories = ({ history }) => {
                             type="select"
                             className="mb-2 mb-sm-0 mr-sm-3"
                             onChange={(e) => filterStories(e.target.value)}>
-                            <option value={""}>-- Filter By --</option>
+                            <option value={""}>Filter</option>
                             <option value={"enhancement"}>Enhancement</option>
                             <option value={"bugfix"}>Bugfix</option>
                             <option value={"development"}>Development</option>
                             <option value={"qa"}>QA</option>
+                            <option value={"type"}>Type</option>
                           </Input>
 
                           <Input
                             type="select"
                             onChange={(e) => sortStories(e.target.value)}>
-                            <option value={""}>-- Sort By --</option>
+                            <option value={""}>Sort </option>
                             <option value={"id"}>ID</option>
                             <option value={"complexity"}>Complexity</option>
-                            <option value={"type"}>Type</option>
-                            <option value={"status"}>Status</option>
-                          </Input>
+                            </Input>
                         </Form>
                       </Col>
                     </Row>
@@ -163,6 +162,7 @@ const Stories = ({ history }) => {
                                 <th>ID</th>
                                 <th>Summary</th>
                                 <th>Type</th>
+                                <th>Description</th>
                                 <th className={"text-center"}>Complexity</th>
                                 <th className={"text-center"}>Time</th>
                                 <th className={"text-center"}>Cost</th>
@@ -179,6 +179,7 @@ const Stories = ({ history }) => {
                                   <td>{story.id}</td>
                                   <td>{story.summary}</td>
                                   <td>{titleCase(story.type)}</td>
+                                  <td>{story.description}</td>
                                   <td className={"text-center"}>
                                     {titleCase(story.complexity)}
                                   </td>

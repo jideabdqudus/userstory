@@ -225,7 +225,7 @@ const CreateStory = ({ history }) => {
                                 <Col md={10}>
                                 <InputGroup>
                                   <InputGroupAddon addonType="prepend">
-                                    <InputGroupText>in Dollars</InputGroupText>
+                                    <InputGroupText>in $</InputGroupText>
                                   </InputGroupAddon>
                                   <Input
                                     id="associatedCost"

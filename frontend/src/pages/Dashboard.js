@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { Link, withRouter } from "react-router-dom";
-import { Alert, Badge, Card, Col, Container, Row, Table } from "reactstrap";
+import { Alert, Badge, Card, Col, Container, Row, Table, Button } from "reactstrap";
 import { Loader, PageTitle } from "../components";
 import { AuthConsumer } from "../components/core";
 import requestClient from "../lib/requestClient";
@@ -62,7 +62,7 @@ const Dashboard = ({ history, user }) => {
           )
         }
       />
-
+        
       <Container className={"stories"}>
         <Row>
           <Col xl={12}>
@@ -74,7 +74,7 @@ const Dashboard = ({ history, user }) => {
                     {isAdmin(user.role) && pendingStories ? (
                       <p className={"lead"}>Pending Stories</p>
                     ) : (
-                      <p className={"lead"}>All Stories</p>
+                      <p className={"lead"}>Stories</p>
                     )}
                   </Col>
                   <Col xs={12}>
@@ -106,6 +106,7 @@ const Dashboard = ({ history, user }) => {
                           <tr>
                             <th>Summary</th>
                             <th>Type</th>
+                            <th>Description</th>
                             <th className={"text-center"}>Complexity</th>
                             <th className={"text-center"}>Time</th>
                             <th className={"text-center"}>Cost</th>
@@ -121,6 +122,7 @@ const Dashboard = ({ history, user }) => {
                               key={index}>
                               <td>{story.summary}</td>
                               <td>{titleCase(story.type)}</td>
+                              <td>{story.description}</td>
                               <td className={"text-center"}>
                                 {titleCase(story.complexity)}
                               </td>

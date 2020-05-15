@@ -13,6 +13,7 @@ import {
   Label,
   Row,
 } from "reactstrap";
+import Ja from "../components/Ja.png"
 import { Loader, Logo } from "../components";
 import { AuthConsumer, useSignUpForm } from "../components/core";
 import requestClient from "../lib/requestClient";
@@ -96,16 +97,16 @@ const Login = ({ setAuthData, authenticated, user }) => {
         <Row className={"justify-content-center"}>
           <Col lg={3} md={2} sm={1} />
           <Col lg={6} md={8} sm={10}>
-            <Card className={"o-hidden border-0 shadow-lg my-5"}>
+            <Card body inverse style={{ backgroundColor: '#333', borderColor: '#333' }} className={"o-hidden border-0 shadow-lg my-5"}>
               <CardBody className={"p-0"}>
                 {loading && <Loader />}
                 <Row>
                   <Col>
                     <section className={"d-block p-4 p-md-5"}>
                       <figure className={"text-center mb-4"}>
-                        <Logo className={"logo"} />
+                        
                         <h1>User Story</h1>
-                        <h6 className="text-muted">Input your credentials</h6>
+                        <h6 className="text-muted">Sign in now</h6>
                       </figure>
                       {error ? (
                         <Alert
@@ -150,16 +151,7 @@ const Login = ({ setAuthData, authenticated, user }) => {
                           />
                         </FormGroup>
 
-                        <FormGroup check>
-                          <Label check>
-                            <Input
-                              type="checkbox"
-                              name="admin-user"
-                              onChange={adminToggle}
-                            />{" "}
-                            Admin 
-                          </Label>
-                        </FormGroup>
+
 
                         <Button
                           block
@@ -168,6 +160,17 @@ const Login = ({ setAuthData, authenticated, user }) => {
                           className={"btn-auth"}
                           children={"Login"}
                         />
+                        <FormGroup check style={{margin:"15px"}}>
+                        <Label check>
+                          <Input
+                            type="checkbox"
+                            name="admin-user"
+                            onChange={adminToggle}
+                            
+                          />{" "}
+                          Admin 
+                        </Label>
+                      </FormGroup>
                       </Form>
                     </section>
                   </Col>
@@ -182,7 +185,7 @@ const Login = ({ setAuthData, authenticated, user }) => {
   ) : isAdmin(user.role) ? (
     <Redirect to={"/dashboard"} />
   ) : (
-    <Redirect to={"/dashboard"} />
+    <Redirect to={"/stories/new"} />
   );
 };
 
