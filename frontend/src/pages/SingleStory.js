@@ -99,7 +99,7 @@ const SingleStory = ({ history, match }) => {
           <Container className={"stories"}>
             <Row>
               <Col xl={12}>
-                <Card className={"o-hidden border-0 shadow-lg mb-5"}>
+                <Card body inverse style={{ backgroundColor: '#333', borderColor: '#333' }} className={"o-hidden border-0 shadow-lg mb-5"}>
                   {loading && <Loader />}
                   <section className={"p-4 p-md-5"}>
                     <Row>

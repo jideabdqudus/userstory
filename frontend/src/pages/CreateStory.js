@@ -80,7 +80,7 @@ const CreateStory = ({ history }) => {
           <Container className={"create-story"}>
             <Row>
               <Col xl={12}>
-                <Card className={"o-hidden border-0 shadow-lg mb-5"}>
+                <Card body inverse style={{ backgroundColor: '#333', borderColor: '#333' }} className={"o-hidden border-0 shadow-lg mb-5"}>
                   {loading && <Loader />}
                   <section className={"p-3 p-md-5"}>
                     <Row>

@@ -8,7 +8,8 @@ $primary: #fed304;
 
 html,
 body {
-    height: 100%
+    height: 100%;
+    background-color: #fed304 !important;
 }
 
 #root {
@@ -20,7 +21,7 @@ body {
     color: #ffffff;
     opacity: 1;
     text-shadow: none;
-}
+}   
 
 ::selection {
     background: var(--primary);
