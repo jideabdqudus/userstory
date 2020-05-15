@@ -4,12 +4,10 @@ import {
   Alert,
   Col,
   Container,
-  Card,
-  Button,
   Form,
   FormGroup,
   Input,
-  InputGroup,  
+  InputGroup,
   InputGroupAddon,
   InputGroupText,
   Label,
@@ -19,15 +17,49 @@ import { Loader, PageTitle } from "../components";
 import { AuthConsumer, useSignUpForm } from "../components/core";
 import requestClient from "../lib/requestClient";
 import { handleApiErrors, isAdmin } from "../lib/utils";
-import clsx from 'clsx';
-import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/styles';
-import Slider from '@material-ui/core/Slider';
-import Typography from '@material-ui/core/Typography';
+import clsx from "clsx";
+import PropTypes from "prop-types";
+import { makeStyles } from "@material-ui/styles";
+import Slider from "@material-ui/core/Slider";
+import Typography from "@material-ui/core/Typography";
+import {
+  Card,
+  CardHeader,
+  CardContent,
+  CardActions,
+  Divider,
+  Grid,
+  Button,
+  TextField,
+} from "@material-ui/core";
 
-  const CreateStory = ({ history }) => {
-  
+const useStyles = makeStyles(() => ({
+  root: {},
+}));
+const marks = [
+  {
+    value: 1,
+    label: "1hr",
+  },
+  {
+    value: 25,
+    label: "25hrs",
+  },
+  {
+    value: 40,
+    label: "40hrs",
+  },
+  {
+    value: 80,
+    label: "80hrs",
+  },
+];
 
+function valuetext(value) {
+  return `${value}hrs`;
+}
+
+const CreateStory = ({ history }) => {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -80,183 +112,121 @@ import Typography from '@material-ui/core/Typography';
     <AuthConsumer>
       {({ user }) => (
         <Fragment>
-          <PageTitle title="Create a new story" />
-          <Container className={"create-story"}>
-            <Row>
-              <Col xl={12}>
-                <Card className={"o-hidden border-0 shadow-lg mb-5"}>
-                  {loading && <Loader />}
-                  <section className={"p-3 p-md-5"}>
-                    <Row>
-                      <Col>
-                        {!isAdmin(user.role) ? (
-                          <Form onSubmit={(e) => createNewStory(e)}>
-                            <Row>
-                              <Col md={12}>
-                                <FormGroup>
-                                  <Label for="storySummary">Summary</Label>
-                                  <Input
-                                    type="text"
-                                    name="storySummary"
-                                    id="storySummary"
-                                    onChange={handleInputChange}
-                                    defaultValue={inputs.storySummary}
-                                    autoFocus
-                                    required
-                                  />
-                                </FormGroup>
-                              </Col>
-                              <Col md={12}>
-                                <FormGroup>
-                                  <Label for="storyDescription">
-                                    Description
-                                  </Label>
-                                  <Input
-                                    type="textarea"
-                                    name="storyDescription"
-                                    id="storyDescription"
-                                    className="textarea"
-                                    onChange={handleInputChange}
-                                    defaultValue={inputs.storyDescription}
-                                    required
-                                  />
-                                </FormGroup>
-                              </Col>
-                              <Col md={6}>
-                                <FormGroup>
-                                  <Label for="storyType">Type</Label>
-                                  <Input
-                                    type="select"
-                                    name="storyType"
-                                    id="storyType"
-                                    onChange={handleInputChange}
-                                    defaultValue=""
-                                    required>
-                                    <option value={""} disabled>
-                                      -- Select --
-                                    </option>
-                                    <option value={"enhancement"}>
-                                      Enhancement
-                                    </option>
-                                    <option value={"bugfix"}>Bugfix</option>
-                                    <option value={"development"}>
-                                      Development
-                                    </option>
-                                    <option value={"qa"}>QA</option>
-                                  </Input>
-                                </FormGroup>
-                              </Col>
-                              <Col md={6}>
-                                <FormGroup>
-                                  <Label for="storyComplexity">
-                                    Complexity
-                                  </Label>
-                                  <Input
-                                    type="select"
-                                    name="storyComplexity"
-                                    id="storyComplexity"
-                                    onChange={handleInputChange}
-                                    defaultValue=""
-                                    required>
-                                    <option value={""} disabled>
-                                      -- Select --
-                                    </option>
-                                    <option value={"low"}>Low</option>
-                                    <option value={"mid"}>Medium</option>
-                                    <option value={"high"}>High</option>
-                                  </Input>
-                                </FormGroup>
-                              </Col>
-                              <Col md={6}>
-                                <FormGroup>
-                                  <Label for="estimatedTime">
-                                    Estimated Time
-                                  </Label>
-                                  <Input
-                                    type="number"
-                                    name="estimatedTime"
-                                    id="estimatedTime"
-                                    placeholder="in hours"
-                                    required
-                                    onChange={handleInputChange}
-                                    defaultValue={inputs.estimatedTime}
-                                  />
-                                </FormGroup>
-                              </Col>
-                              <Col md={6}>
-                                <FormGroup>
-                                  <Label for="associatedCost">Cost</Label>
-                                  <InputGroup>
-                                    <InputGroupAddon addonType="prepend">
-                                      <InputGroupText>$</InputGroupText>
-                                    </InputGroupAddon>
-                                    <Input
-                                      id="associatedCost"
-                                      name="associatedCost"
-                                      type="text"
-                                      inputMode="numeric"
-                                      pattern="[0-9]*"
-                                      required
-                                      onChange={handleInputChange}
-                                      defaultValue={inputs.associatedCost}
-                                    />
-                                  </InputGroup>
-                                </FormGroup>
-                              </Col>
-                            </Row>
-                            <Row>
-                              <Col md={6}>
-                                <Button
-                                  type="submit"
-                                  color="primary"
-                                  children="Create Story"
-                                  className="px-5 w-100 mb-4"
-                                  disabled={loading || success}
-                                />
-                              </Col>
-                            </Row>
-                            <Row>
-                              <Col>
-                                {error && !success ? (
-                                  <Alert
-                                    color={"danger"}
-                                    className={"mb-4"}
-                                    children={`${
-                                      typeof error === "string"
-                                        ? error
-                                        : "There was an error creating your story, please, try again later."
-                                    }`}
-                                  />
-                                ) : success ? (
-                                  <Alert
-                                    color={"success"}
-                                    className={"mb-4"}
-                                    children={"Story successfully created"}
-                                  />
-                                ) : (
-                                  ""
-                                )}
-                              </Col>
-                            </Row>
-                          </Form>
-                        ) : (
-                          <Fragment>
-                            <Alert
-                              color={"danger"}
-                              className={"mb-4"}
-                              children={"Sorry, you cannot create a story"}
-                            />
-                            <span className={"d-none"}>
-                              {setTimeout(() => history.push("/stories"), 2000)}
-                            </span>
-                          </Fragment>
-                        )}
-                      </Col>
-                    </Row>
-                  </section>
-                </Card>
-              </Col>
-            </Row>
+          <Container className="create-story">
+            <Card>
+              {loading && <Loader />}
+
+              <div>
+                <form
+                  onSubmit={(e) => createNewStory(e)}
+                  autoComplete="off"
+                  noValidate
+                >
+                  <CardHeader
+                    subheader="The information can be edited"
+                    title="Create a story"
+                  />
+                  <Divider />
+                  <CardContent>
+                    <Grid container spacing={3}>
+                      <Grid item md={6} xs={12}>
+                        <TextField
+                          fullWidth
+                          helperText="Please specify the title"
+                          label="Title"
+                          id="storySummary"
+                          name="storySummary"
+                          margin="dense"
+                          defaultValue={inputs.storySummary}
+                          onChange={handleInputChange}
+                          required
+                          variant="outlined"
+                        />
+                      </Grid>
+                      <Grid item md={12} xs={12}>
+                        <TextField
+                          fullWidth
+                          id="storyDescription"
+                          name="storyDescription"
+                          label="Story"
+                          required
+                          multiline
+                          onChange={handleInputChange}
+                          margin="dense"
+                          rows={10}
+                          defaultValue={inputs.storyDescription}
+                          variant="outlined"
+                        />
+                      </Grid>
+                      <Grid item md={6} xs={12}>
+                        <TextField
+                          fullWidth
+                          label="Type"
+                          margin="dense"
+                          defaultValue=" "
+                          name="state"
+                          onChange={handleInputChange}
+                          required
+                          select
+                          // eslint-disable-next-line react/jsx-sort-props
+                          variant="outlined"
+                        >
+                          <option value={"enhancement"}>Enhancement</option>
+                          <option value={"bugfix"}>Bugfix</option>
+                          <option value={"development"}>Development</option>
+                          <option value={"qa"}>QA</option>
+                        </TextField>
+                      </Grid>
+                      <Grid item md={6} xs={12}>
+                        <TextField
+                          fullWidth
+                          label="Complexity"
+                          margin="dense"
+                          name="state"
+                          onChange={handleInputChange}
+                          required
+                          select
+                          // eslint-disable-next-line react/jsx-sort-props
+                          SelectProps={{ native: true }}
+                          variant="outlined"
+                        ></TextField>
+                      </Grid>
+                      <Grid item md={6} xs={12}>
+                        <Typography id="discrete-slider-always" gutterBottom>
+                          Estimated time
+                        </Typography>
+                        <Slider
+                          defaultValue={80}
+                          getAriaValueText={valuetext}
+                          aria-labelledby="discrete-slider-always"
+                          step={10}
+                          marks={marks}
+                          valueLabelDisplay="on"
+                        />
+                      </Grid>
+                      <Grid item md={6} xs={12}>
+                        <TextField
+                          fullWidth
+                          label="Cost in $"
+                          margin="dense"
+                          name="country"
+                          onChange={handleInputChange}
+                          required
+                          defaultValue=" "
+                          variant="outlined"
+                        />
+                      </Grid>
+                    </Grid>
+                  </CardContent>
+                  <Divider />
+                  <CardActions>
+                    <Button color="primary" variant="contained">
+                      Create Story
+                    </Button>
+                  </CardActions>
+                </form>
+              </div>
+            </Card>
           </Container>
         </Fragment>
       )}
