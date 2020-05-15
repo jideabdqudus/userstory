@@ -103,13 +103,13 @@ const SingleStory = ({ history, match }) => {
                   {loading && <Loader />}
                   <section className={"p-4 p-md-5"}>
                     <Row>
-                      <Col>
+                      <Col> 
                         {(!loading && !story) || error.loadFailed ? (
                           <Alert
                             color={"danger"}
                             className={"mb-4 text-center"}
                             children={
-                              "There was an error loading the story. please, try again later."
+                              "There was an error loading the story."
                             }
                           />
                         ) : (
@@ -120,7 +120,7 @@ const SingleStory = ({ history, match }) => {
                                   color={"danger"}
                                   className={"mb-4"}
                                   children={
-                                    "There was an error updating story status. please, try again later."
+                                    "There was an error updating story status."
                                   }
                                 />
                               ))}

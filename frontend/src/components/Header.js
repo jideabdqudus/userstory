@@ -22,14 +22,14 @@ const Header = ({ fullName, logout }) => {
   const toggle = () => setDropdownOpen(!dropdownOpen);
   return (
     
-    <header className="header shadow-sm py-2 mb-4">
-      <Container>
+    <header className="header shadow-sm py-2 mb-4" style={{ backgroundColor: '#333', borderColor: '#333' }}>
+      <Container style={{ backgroundColor: '#333', borderColor: '#333' }}>
         <Row>
-          <Navbar light expand="md" className={"w-100"}>
+          <Navbar style={{ backgroundColor: '#333', borderColor: 'white', color:"white"}} color="faded" light className={"w-100"}>
             <Link to={"/dashboard"}>
               <Logo className={"logo"} />
             </Link>
-            <NavbarToggler onClick={toggle} />
+            <NavbarToggler onClick={toggle} style={{ backgroundColor: 'white', borderColor: '#333' }} />
             <Collapse isOpen={dropdownOpen} navbar>
               <Nav className="ml-auto" navbar>
                 <hr className="d-md-none" />

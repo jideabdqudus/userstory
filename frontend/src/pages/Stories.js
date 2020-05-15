@@ -87,7 +87,7 @@ const Stories = ({ history }) => {
             button={
               !isAdmin(user.role) && (
                 <Link to={"/stories/new"} className="btn btn-primary">
-                  Create New Story
+                  New Story
                 </Link>
               )
             }
@@ -138,7 +138,7 @@ const Stories = ({ history }) => {
                             color={"primary"}
                             className={"mb-4 text-center"}
                             children={
-                              "You have not created any story. Create one now"
+                              "You have not created any story. Create one"
                             }
                           />
                         ) : error ? (
@@ -146,7 +146,7 @@ const Stories = ({ history }) => {
                             color={"danger"}
                             className={"mb-4 text-center"}
                             children={
-                              "There was an error loading stories. please, try again later."
+                              "There was an error."
                             }
                           />
                         ) : (
