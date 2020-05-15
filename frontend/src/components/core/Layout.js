@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 import { Header } from "..";
 import { CreateStory, Dashboard, SingleStory, Stories } from "../../pages";
-import { AuthConsumer } from "./";
+import { AuthConsumer } from ".";
 
 const LayoutWrapper = (props) => (
   <AuthConsumer>

@@ -2,8 +2,6 @@ import React, { Fragment, useState } from "react";
 import { withRouter } from "react-router-dom";
 import {
   Alert,
-  Button,
-  Card,
   Col,
   Container,
   Form,
@@ -19,8 +17,53 @@ import { Loader, PageTitle } from "../components";
 import { AuthConsumer, useSignUpForm } from "../components/core";
 import requestClient from "../lib/requestClient";
 import { handleApiErrors, isAdmin } from "../lib/utils";
+import clsx from 'clsx';
+import PropTypes from 'prop-types';
+import { makeStyles } from '@material-ui/styles';
+import Slider from '@material-ui/core/Slider';
+import Typography from '@material-ui/core/Typography';
+import {
+  Card,
+  CardHeader,
+  CardContent,
+  CardActions,
+  Divider,
+  Grid,
+  Button,
+  TextField
+} from '@material-ui/core';
 
-const CreateStory = ({ history }) => {
+
+  const CreateStory = ({ history }) => {
+  
+    
+const useStyles = makeStyles(() => ({
+  root: {}
+}));
+const marks = [
+  {
+    value: 1,
+    label: '1hr',
+  },
+  {
+    value: 25,
+    label: '25hrs',
+  },
+  {
+    value: 40,
+    label: '40hrs',
+  },
+  {
+    value: 80,
+    label: '80hrs',
+  },
+];
+
+function valuetext(value) {
+  return `${value}hrs`;
+}
+
+    
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);

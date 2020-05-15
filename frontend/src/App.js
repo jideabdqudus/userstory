@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Redirect, Route } from "react-router-dom";
 import "./App.scss";
 import { Auth, AuthConsumer, Layout } from "./components/core";
-import { Login } from "./pages/";
+import { Login } from "./pages";
 
 const App = () => {
   return (

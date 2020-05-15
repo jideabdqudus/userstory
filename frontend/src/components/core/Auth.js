@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { AuthProvider } from "./";
+import { AuthProvider } from ".";
 
 const Auth = ({ children }) => {
   const existingAuthData = JSON.parse(localStorage.getItem("auth"));

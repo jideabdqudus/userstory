@@ -14,7 +14,7 @@ import {
   Row,
   UncontrolledDropdown,
 } from "reactstrap";
-import { Logo } from "../components";
+import { Logo } from ".";
 
 const Header = ({ fullName, logout }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
