@@ -13,8 +13,7 @@ import {
   Label,
   Row,
 } from "reactstrap";
-import Ja from "../components/Ja.png"
-import { Loader, Logo } from "../components";
+import { Loader } from "../components";
 import { AuthConsumer, useSignUpForm } from "../components/core";
 import requestClient from "../lib/requestClient";
 import { handleApiErrors, isAdmin } from "../lib/utils";

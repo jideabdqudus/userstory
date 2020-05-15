@@ -22,9 +22,9 @@ if the api starts successfully, the terminal will print out the following
 
 ## Running the Frontend
       
-    $ cd frontent
-    $ yarn
-    $ yarn start
+    $ cd frontend
+    $ yarn or npm install 
+    $ yarn start or npm start
     
 If the frontend starts successfully, you will see the following in your terminal
 
@@ -40,20 +40,8 @@ If the frontend starts successfully, you will see the following in your terminal
 
 **Frontend Url:** `http://localhost:2370` 
 
-## Note
+## JA
 
-- I updated the Mock API and added status to the mock stories
+Users can filter stories by type, also able to sort stories by ID, complexity, type, description, and status. 
+I added features to the API, such as status, approval/decline of story, pending status.
 
-- I assumed that the major task of the Admin will be Reviewing of User Stories for Acceptance and Rejection, hence on the Admin dashboard, when there are pending stories, only the pending stories are displayed. When there are no pending stories, All user stories are listed
-
-- I assumed that an Admin would not be creating Stories, hence an Admin doesn't see the `Create Story` Button. If an admin navigates to the Create Story url, an error notification is shown and the admin is redirected to the Stories Page
-
-- The API doesn't make provision for Approval/Decline off the User Story, hence I updated the api with a new route that handles the approval and rejection of stories
-
-- I assumed that when a user created a story, the default status should be `pending`, hence I updated the mock api to append `pending` to newly created stories
-
-- I observed that the API doesn't use the amount and estimates hours from the request body, in order for this not to be a blocker, I updated the mock api 
-
-- On the Stories List page, a user is able to alphabetically sort the stories by ID, Complexity, Type and Status  
-
-- On the Stories List page, a user is able to filter stories by Type  

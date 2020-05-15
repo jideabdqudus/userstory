@@ -1,9 +1,8 @@
 import React from "react";
-import Ja from "./Ja.png"
 
 function Logo(props) {
   return (
-    <div> </div>
+    <div><h1>User Story</h1> </div>
   );
 }
 

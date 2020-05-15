@@ -18,7 +18,7 @@ import {
 import {
   CardHeader,
 } from '@material-ui/core';
-import { Loader, PageTitle } from "../components";
+import { Loader} from "../components";
 import { AuthConsumer, useSignUpForm } from "../components/core";
 import requestClient from "../lib/requestClient";
 import { handleApiErrors, isAdmin } from "../lib/utils";

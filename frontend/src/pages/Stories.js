@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { Link, withRouter } from "react-router-dom";
-import { Alert, Badge, Card, Col, Container, Form, Input, Row, Table } from "reactstrap";
+import { Alert, Badge, Col, Container, Form, Input, Row, Table } from "reactstrap";
 import { Loader, PageTitle } from "../components";
 import { AuthConsumer } from "../components/core";
 import requestClient from "../lib/requestClient";
@@ -102,7 +102,7 @@ const Stories = ({ history }) => {
                     <Row className="mb-3">
                       <Col lg={6}>
                         {param && (
-                          <h5 className={"sm-text-left mb-3 text-secondary"}>
+                          <h5 className={"sm-text-left mb-3"}>
                             {`Stories ${paramType} by ${param}`}
                           </h5>
                         )}

@@ -124,7 +124,7 @@ const SingleStory = ({ history, match }) => {
                                   }
                                 />
                               ))}
-                            <h4 className="mb-3 w-100 d-flex">
+                            <h3 className="mb-3 w-100 d-flex">
                               {story.summary}
                               <small className={"ml-auto"}>
                                 {story.status === "approved" ? (
@@ -141,8 +141,9 @@ const SingleStory = ({ history, match }) => {
                                   </Badge>
                                 )}
                               </small>
-                            </h4>
-                            <p className="lead text-secondary">
+                            </h3>
+                            <hr/>
+                            <p className="lead">
                               {story.description}
                             </p>
                             <ul className={"w-100 d-flex p-0 text-secondary"}>

@@ -15,27 +15,41 @@ import {
   UncontrolledDropdown,
 } from "reactstrap";
 import { Logo } from ".";
-import Sidebar from "./Sidebar"
 const Header = ({ fullName, logout }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const toggle = () => setDropdownOpen(!dropdownOpen);
   return (
-    
-    <header className="header shadow-sm py-2 mb-4" style={{ backgroundColor: '#333', borderColor: '#333' }}>
-      <Container style={{ backgroundColor: '#333', borderColor: '#333' }}>
+    <header
+      className="header shadow-sm py-2 mb-4"
+      style={{ backgroundColor: "#333", borderColor: "#333" }}
+    >
+      <Container style={{ backgroundColor: "#333", borderColor: "#333" }}>
         <Row>
-          <Navbar style={{ backgroundColor: '#333', borderColor: 'white', color:"white"}} color="faded" light className={"w-100"}>
+          <Navbar
+            style={{
+              backgroundColor: "#333",
+              borderColor: "white",
+              color: "white",
+            }}
+            color="faded"
+            light
+            className={"w-100"}
+          >
             <Link to={"/dashboard"}>
               <Logo className={"logo"} />
             </Link>
-            <NavbarToggler onClick={toggle} style={{ backgroundColor: 'white', borderColor: '#333' }} />
+            <NavbarToggler
+              onClick={toggle}
+              style={{ backgroundColor: "white", borderColor: "#333" }}
+            />
             <Collapse isOpen={dropdownOpen} navbar>
               <Nav className="ml-auto" navbar>
                 <hr className="d-md-none" />
 
                 <NavItem>
                   <NavLink
+
                     className={"nav-link"}
                     to={"/dashboard"}
                     children="Dashboard"
@@ -58,7 +72,7 @@ const Header = ({ fullName, logout }) => {
                   <DropdownToggle nav caret className={"ml-md-4"}>
                     <span className={"mr-2"}>{fullName}</span>
                   </DropdownToggle>
-                  <DropdownMenu right className={"p-2 w-100"}>
+                  <DropdownMenu className={"p-2 w-1"}>
                     <Button
                       color="danger"
                       className={"w-100"}
