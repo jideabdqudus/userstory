@@ -86,6 +86,7 @@ const CreateStory = ({ history }) => {
                     <Row>
                       <Col>
                         {!isAdmin(user.role) ? (
+                          
                           <Form onSubmit={(e) => createNewStory(e)}>
                           <CardHeader
                           subheader="The information here can be edited"

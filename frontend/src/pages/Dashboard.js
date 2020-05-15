@@ -66,7 +66,7 @@ const Dashboard = ({ history, user }) => {
       <Container className={"stories"}>
         <Row>
           <Col xl={12}>
-            <Card className={"o-hidden border-0 shadow-lg mb-5"}>
+            
               {loading && <Loader />}
               <section className={"p-3 p-md-5"}>
                 <Row>
@@ -100,6 +100,7 @@ const Dashboard = ({ history, user }) => {
                         striped
                         responsive
                         hover
+                        dark
                         className="m-0">
                         <thead>
                           <tr>
@@ -150,7 +151,7 @@ const Dashboard = ({ history, user }) => {
                   </Col>
                 </Row>
               </section>
-            </Card>
+          
           </Col>
         </Row>
       </Container>

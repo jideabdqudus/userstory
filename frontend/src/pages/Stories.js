@@ -96,7 +96,7 @@ const Stories = ({ history }) => {
           <Container className={"stories"}>
             <Row>
               <Col xl={12}>
-                <Card className={"o-hidden border-0 shadow-lg mb-5"}>
+                
                   {loading && <Loader />}
                   <section className={"p-3 p-sm-4 p-md-5"}>
                     <Row className="mb-3">
@@ -155,6 +155,7 @@ const Stories = ({ history }) => {
                             borderless
                             striped
                             responsive
+                            dark
                             hover
                             className="m-0">
                             <thead>
@@ -210,7 +211,7 @@ const Stories = ({ history }) => {
                       </Col>
                     </Row>
                   </section>
-                </Card>
+              
               </Col>
             </Row>
           </Container>
