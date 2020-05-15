@@ -30,7 +30,7 @@ if the api starts successfully, the terminal will print out the following
     
       Local:            http://localhost:2000
     
-**Frontend Url:** `http://localhost:2370` 
+**Frontend Url:** `http://localhost:2000` 
 
 ## JA
 
