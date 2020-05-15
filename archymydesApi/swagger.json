@@ -1,0 +1,248 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "API doc for Archimydes mock api server",
+    "version": "1.0.0",
+    "title": "Archimydes Mock API Doc",
+    "termsOfService": "http://swagger.io/terms/"
+  },
+  "host": "localhost:3000",
+  "basePath": "/api",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/v1/signin": {
+      "post": {
+        "summary": "Login a user",
+        "description": "Return a user object along with auth token",
+        "operationId": "login",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "User credentials",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SigninRequest"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          },
+          "200": {
+            "description": "Successfully Authenticated",
+            "schema": {
+              "$ref": "#/definitions/SigninResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/stories": {
+      "get": {
+        "summary": "Get Story List",
+        "description": "Get all the stories owned by a user",
+        "operationId": "getStoryList",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Found Story",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Story"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create Story",
+        "description": "Create a new story",
+        "operationId": "createStory",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "story id",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CreateStoryRequest"
+            }
+          }
+        ],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "201": {
+            "description": "Story got crated",
+            "schema": {
+              "$ref": "#/definitions/Story"
+            }
+          }
+        }
+      }
+    },
+    "/v1/stories/{id}": {
+      "get": {
+        "summary": "Get Story",
+        "description": "Get story by id",
+        "operationId": "getStory",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "story id",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "Found Story",
+            "schema": {
+              "$ref": "#/definitions/Story"
+            }
+          }
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "ApiKeyAuth": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "authorization"
+    }
+  },
+  "definitions": {
+    "SigninRequest": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "isAdmin": {
+          "type": "boolean"
+        }
+      }
+    },
+    "SigninResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "role": {
+          "type": "string"
+        },
+        "token": {
+          "type": "string"
+        }
+      }
+    },
+    "Story": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "createdBy": {
+          "type": "integer"
+        },
+        "summary": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "cost": {
+          "type": "integer"
+        },
+        "complexity": {
+          "type": "string"
+        },
+        "estimatedHrs": {
+          "type": "string"
+        }
+      }
+    },
+    "CreateStoryRequest": {
+      "type": "object",
+      "properties": {
+        "summary": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "complexity": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

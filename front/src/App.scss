@@ -1,0 +1,125 @@
+.login {
+  align-items: center;
+  background-image: linear-gradient(var(--primary2), var(--primary));
+  display: flex;
+  min-height: 100vh;
+
+  .logo {
+    max-width: 80%;
+    height: auto;
+  }
+
+  .input-auth {
+    border-radius: 2rem;
+    line-height: 1rem;
+    height: auto;
+    padding: 1rem;
+  }
+
+  .form-group,
+  .form-check {
+    margin: 0 auto 1rem;
+    max-width: 400px;
+
+    &-label {
+      cursor: pointer;
+    }
+  }
+
+  .btn.btn-auth {
+    border-radius: 50px;
+    line-height: 35px;
+    margin: 0 auto;
+    max-width: 400px;
+  }
+
+  .alert {
+    margin: 0 auto;
+    max-width: 400px;
+  }
+}
+
+.header {
+  background: var(--white);
+  padding: 0;
+
+  .logo {
+    height: 45px;
+    width: auto;
+  }
+
+  .navbar {
+
+    .nav-item {
+      a.active {
+        color: var(--primary);
+      }
+    }
+  }
+}
+
+.page-title {
+  margin-bottom: 2rem;
+
+  h1 {
+    font-size: 2rem;
+    font-weight: 400;
+  }
+}
+
+.stories {
+  .card {
+    min-height: 10rem;
+  }
+
+  tbody {
+    tr:hover {
+      cursor: pointer;
+    }
+  }
+
+  .table th,
+  .table td {
+    padding: 1rem
+  }
+}
+
+.create-story {
+  .form {
+    &-group {
+      margin-bottom: 1.5rem;
+
+      label {
+        opacity: 0.8;
+        cursor: pointer;
+        margin-bottom: 0.75rem;
+      }
+    }
+
+    &-control {
+      height: 3rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+
+      &.textarea {
+        height: 6.5rem;
+        padding: 1rem;
+      }
+    }
+  }
+
+  .btn {
+    border-radius: 50px;
+    height: 3rem;
+  }
+}
+
+.loader {
+  background: rgba($color: #ffffff, $alpha: 0.75);
+  z-index: 9;
+  left: 0;
+
+  .spinner-border {
+    z-index: 999;
+  }
+}

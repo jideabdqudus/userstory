@@ -1,0 +1,90 @@
+[
+  {
+    "id": 1,
+    "createdBy": 1,
+    "summary": "Add status to User",
+    "description": "User can have multiple status(Active, Inactive, Invited, Deleted)",
+    "type": "enhancement",
+    "complexity": "low",
+    "estimatedHrs": 1,
+    "cost": 10,
+    "status": "rejected"
+  },
+  {
+    "id": 2,
+    "createdBy": 2,
+    "summary": "Invalidate the auth token",
+    "description": "Add expirty time to the authentication token so that user will be logged out after expiry",
+    "type": "enhancement",
+    "complexity": "mid",
+    "estimatedHrs": 1,
+    "cost": 20,
+    "status": "pending"
+  },
+  {
+    "id": 3,
+    "createdBy": 3,
+    "summary": "Invalidate the auth token",
+    "description": "Add expirty time to the authentication token so that user will be logged out after expiry",
+    "type": "enhancement",
+    "complexity": "mid",
+    "estimatedHrs": 1,
+    "cost": 25,
+    "status": "approved"
+  },
+  {
+    "id": 4,
+    "createdBy": 4,
+    "summary": "Invalidate the auth token",
+    "description": "Add expirty time to the authentication token so that user will be logged out after expiry",
+    "type": "enhancement",
+    "complexity": "mid",
+    "estimatedHrs": 1,
+    "cost": 65,
+    "status": "pending"
+  },
+  {
+    "id": 5,
+    "createdBy": 1,
+    "summary": "Fix name of the user",
+    "description": "Name should be the combination of firstname and lastname.",
+    "type": "bugfix",
+    "complexity": "high",
+    "estimatedHrs": 1,
+    "cost": 90,
+    "status": "pending"
+  },
+  {
+    "id": 6,
+    "createdBy": 2,
+    "summary": "Fix name of the user",
+    "description": "Name should be the combination of firstname and lastname.",
+    "type": "bugfix",
+    "complexity": "high",
+    "estimatedHrs": 1,
+    "cost": 35,
+    "status": "pending"
+  },
+  {
+    "id": 7,
+    "createdBy": 4,
+    "summary": "Fix name of the user",
+    "description": "Name should be the combination of firstname and lastname.",
+    "type": "bugfix",
+    "complexity": "high",
+    "estimatedHrs": 1,
+    "cost": 90,
+    "status": "pending"
+  },
+  {
+    "id": 8,
+    "createdBy": 3,
+    "summary": "Add skills to the user",
+    "description": "As a user, I should be able to add skills to my profile",
+    "type": "development",
+    "complexity": "low",
+    "estimatedHrs": 1,
+    "cost": 50,
+    "status": "pending"
+  }
+]

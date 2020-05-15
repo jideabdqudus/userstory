@@ -1,0 +1,36 @@
+:root {
+    --primary2: #00B3FF;
+    --bold: 700;
+}
+
+$font-family-sans-serif: 'Muli', sans-serif;
+$primary: #005CF8;
+
+html,
+body {
+    height: 100%
+}
+
+#root {
+    min-height: 100%;
+}
+
+::-moz-selection {
+    background: var(--primary);
+    color: #ffffff;
+    opacity: 1;
+    text-shadow: none;
+}
+
+::selection {
+    background: var(--primary);
+    color: #ffffff;
+    opacity: 1;
+    text-shadow: none;
+}
+
+.btn:disabled {
+    cursor: no-drop;
+}
+
+@import '~bootstrap/scss/bootstrap';
