@@ -15,14 +15,15 @@ import {
   UncontrolledDropdown,
 } from "reactstrap";
 import { Logo } from ".";
-
 const Header = ({ fullName, logout }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const toggle = () => setDropdownOpen(!dropdownOpen);
   return (
+    
     <header className="header shadow-sm py-2 mb-4">
       <Container>
+      
         <Row>
           <Navbar light expand="md" className={"w-100"}>
             <Link to={"/dashboard"}>

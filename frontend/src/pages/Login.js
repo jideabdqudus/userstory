@@ -104,6 +104,8 @@ const Login = ({ setAuthData, authenticated, user }) => {
                     <section className={"d-block p-4 p-md-5"}>
                       <figure className={"text-center mb-4"}>
                         <Logo className={"logo"} />
+                        <h1>User Story</h1>
+                        <h6 className="text-muted">Input your credentials</h6>
                       </figure>
                       {error ? (
                         <Alert
@@ -155,7 +157,7 @@ const Login = ({ setAuthData, authenticated, user }) => {
                               name="admin-user"
                               onChange={adminToggle}
                             />{" "}
-                            Site Admin
+                            Admin 
                           </Label>
                         </FormGroup>
 
@@ -180,7 +182,7 @@ const Login = ({ setAuthData, authenticated, user }) => {
   ) : isAdmin(user.role) ? (
     <Redirect to={"/dashboard"} />
   ) : (
-    <Redirect to={"/stories/new"} />
+    <Redirect to={"/dashboard"} />
   );
 };
 
