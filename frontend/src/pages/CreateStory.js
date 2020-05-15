@@ -15,6 +15,9 @@ import {
   Label,
   Row,
 } from "reactstrap";
+import {
+  CardHeader,
+} from '@material-ui/core';
 import { Loader, PageTitle } from "../components";
 import { AuthConsumer, useSignUpForm } from "../components/core";
 import requestClient from "../lib/requestClient";
@@ -73,7 +76,7 @@ const CreateStory = ({ history }) => {
     <AuthConsumer>
       {({ user }) => (
         <Fragment>
-          <PageTitle title="Create a new story" />
+           
           <Container className={"create-story"}>
             <Row>
               <Col xl={12}>
@@ -84,6 +87,34 @@ const CreateStory = ({ history }) => {
                       <Col>
                         {!isAdmin(user.role) ? (
                           <Form onSubmit={(e) => createNewStory(e)}>
+                          <CardHeader
+                          subheader="The information here can be edited"
+                          title="Create a story"
+                        />
+                        <hr/>
+                          <Row>
+                              <Col>
+                                {error && !success ? (
+                                  <Alert
+                                    color={"danger"}
+                                    className={"mb-4"}
+                                    children={`${
+                                      typeof error === "string"
+                                        ? error
+                                        : "An error Occured."
+                                    }`}
+                                  />
+                                ) : success ? (
+                                  <Alert
+                                    color={"success"}
+                                    className={"mb-4"}
+                                    children={"Story Created Succesfully"}
+                                  />
+                                ) : (
+                                  ""
+                                )}
+                              </Col>
+                            </Row>
                             <FormGroup row>
                               <Label for="storySummary" sm={2}>
                                 Summary
@@ -120,9 +151,10 @@ const CreateStory = ({ history }) => {
                               </FormGroup>
                             
                             
-                              <FormGroup>
-                              <Col md={6}></Col>
-                                <Label for="storyType">Type</Label>
+                              <FormGroup row >
+                              
+                                <Label for="storyType" md={2}>Type</Label>
+                                <Col md={10}>
                                 <Input
                                   type="select"
                                   name="storyType"
@@ -132,7 +164,7 @@ const CreateStory = ({ history }) => {
                                   required
                                 >
                                   <option value={""} disabled>
-                                    -- Select --
+                                    Choose
                                   </option>
                                   <option value={"enhancement"}>
                                     Enhancement
@@ -143,11 +175,13 @@ const CreateStory = ({ history }) => {
                                   </option>
                                   <option value={"qa"}>QA</option>
                                 </Input>
+                                </Col>
                               </FormGroup>
-                            </Col>
-                            <Col md={6}>
-                              <FormGroup>
-                                <Label for="storyComplexity">Complexity</Label>
+                            
+                            
+                              <FormGroup row>
+                                <Label md={2} for="storyComplexity">Complexity</Label>
+                                <Col md={10}>
                                 <Input
                                   type="select"
                                   name="storyComplexity"
@@ -157,36 +191,40 @@ const CreateStory = ({ history }) => {
                                   required
                                 >
                                   <option value={""} disabled>
-                                    -- Select --
+                                    Choose
                                   </option>
                                   <option value={"low"}>Low</option>
                                   <option value={"mid"}>Medium</option>
                                   <option value={"high"}>High</option>
                                 </Input>
+                                </Col>
                               </FormGroup>
-                            </Col>
-                            <Col md={6}>
-                              <FormGroup>
-                                <Label for="estimatedTime">
+                            
+                            
+                              <FormGroup row>
+                                <Label  md={2} for="estimatedTime">
                                   Estimated Time
                                 </Label>
+                                <Col md={10}>
                                 <Input
                                   type="number"
                                   name="estimatedTime"
                                   id="estimatedTime"
-                                  placeholder="in hours"
+                                  placeholder="time in hrs"
                                   required
                                   onChange={handleInputChange}
                                   defaultValue={inputs.estimatedTime}
                                 />
+                                </Col>
                               </FormGroup>
-                            </Col>
-                            <Col md={6}>
-                              <FormGroup>
-                                <Label for="associatedCost">Cost</Label>
+                            
+                            
+                              <FormGroup row>
+                                <Label md={2} for="associatedCost">Cost</Label>
+                                <Col md={10}>
                                 <InputGroup>
                                   <InputGroupAddon addonType="prepend">
-                                    <InputGroupText>$</InputGroupText>
+                                    <InputGroupText>in Dollars</InputGroupText>
                                   </InputGroupAddon>
                                   <Input
                                     id="associatedCost"
@@ -199,8 +237,9 @@ const CreateStory = ({ history }) => {
                                     defaultValue={inputs.associatedCost}
                                   />
                                 </InputGroup>
+                                </Col>
                               </FormGroup>
-                            </Col>
+                            
 
                             <Row>
                               <Col md={12}>
@@ -214,29 +253,7 @@ const CreateStory = ({ history }) => {
                                 />
                               </Col>
                             </Row>
-                            <Row>
-                              <Col>
-                                {error && !success ? (
-                                  <Alert
-                                    color={"danger"}
-                                    className={"mb-4"}
-                                    children={`${
-                                      typeof error === "string"
-                                        ? error
-                                        : "There was an error creating your story, please, try again later."
-                                    }`}
-                                  />
-                                ) : success ? (
-                                  <Alert
-                                    color={"success"}
-                                    className={"mb-4"}
-                                    children={"Story successfully created"}
-                                  />
-                                ) : (
-                                  ""
-                                )}
-                              </Col>
-                            </Row>
+                            
                           </Form>
                         ) : (
                           <Fragment>
