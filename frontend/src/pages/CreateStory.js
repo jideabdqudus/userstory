@@ -20,7 +20,6 @@ import { AuthConsumer, useSignUpForm } from "../components/core";
 import requestClient from "../lib/requestClient";
 import { handleApiErrors, isAdmin } from "../lib/utils";
 
-
 const CreateStory = ({ history }) => {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -28,7 +27,7 @@ const CreateStory = ({ history }) => {
   const { inputs, handleInputChange } = useSignUpForm();
 
   const createNewStory = async (e) => {
-    e.preventDefault(); 
+    e.preventDefault();
     e.stopPropagation();
 
     const {
@@ -85,128 +84,132 @@ const CreateStory = ({ history }) => {
                       <Col>
                         {!isAdmin(user.role) ? (
                           <Form onSubmit={(e) => createNewStory(e)}>
-                            <Row>
-                              <Col md={12}>
-                                <FormGroup>
-                                  <Label for="storySummary">Summary</Label>
+                            <FormGroup row>
+                              <Label for="storySummary" sm={2}>
+                                Summary
+                              </Label>
+                              <Col sm={10}>
+                                <Input
+                                  type="text"
+                                  name="storySummary"
+                                  id="storySummary"
+                                  onChange={handleInputChange}
+                                  defaultValue={inputs.storySummary}
+                                  autoFocus
+                                  required
+                                />
+                              </Col>
+                            </FormGroup>
+
+                            
+                              <FormGroup row>
+                                <Label for="storyDescription" md={2}>
+                                  Description
+                                </Label>
+                                <Col md={10}>
+                                <Input
+                                  type="textarea"
+                                  name="storyDescription"
+                                  id="storyDescription"
+                                  className="textarea"
+                                  onChange={handleInputChange}
+                                  defaultValue={inputs.storyDescription}
+                                  required
+                                />
+                                </Col>
+                              </FormGroup>
+                            
+                            
+                              <FormGroup>
+                              <Col md={6}></Col>
+                                <Label for="storyType">Type</Label>
+                                <Input
+                                  type="select"
+                                  name="storyType"
+                                  id="storyType"
+                                  onChange={handleInputChange}
+                                  defaultValue=""
+                                  required
+                                >
+                                  <option value={""} disabled>
+                                    -- Select --
+                                  </option>
+                                  <option value={"enhancement"}>
+                                    Enhancement
+                                  </option>
+                                  <option value={"bugfix"}>Bugfix</option>
+                                  <option value={"development"}>
+                                    Development
+                                  </option>
+                                  <option value={"qa"}>QA</option>
+                                </Input>
+                              </FormGroup>
+                            </Col>
+                            <Col md={6}>
+                              <FormGroup>
+                                <Label for="storyComplexity">Complexity</Label>
+                                <Input
+                                  type="select"
+                                  name="storyComplexity"
+                                  id="storyComplexity"
+                                  onChange={handleInputChange}
+                                  defaultValue=""
+                                  required
+                                >
+                                  <option value={""} disabled>
+                                    -- Select --
+                                  </option>
+                                  <option value={"low"}>Low</option>
+                                  <option value={"mid"}>Medium</option>
+                                  <option value={"high"}>High</option>
+                                </Input>
+                              </FormGroup>
+                            </Col>
+                            <Col md={6}>
+                              <FormGroup>
+                                <Label for="estimatedTime">
+                                  Estimated Time
+                                </Label>
+                                <Input
+                                  type="number"
+                                  name="estimatedTime"
+                                  id="estimatedTime"
+                                  placeholder="in hours"
+                                  required
+                                  onChange={handleInputChange}
+                                  defaultValue={inputs.estimatedTime}
+                                />
+                              </FormGroup>
+                            </Col>
+                            <Col md={6}>
+                              <FormGroup>
+                                <Label for="associatedCost">Cost</Label>
+                                <InputGroup>
+                                  <InputGroupAddon addonType="prepend">
+                                    <InputGroupText>$</InputGroupText>
+                                  </InputGroupAddon>
                                   <Input
+                                    id="associatedCost"
+                                    name="associatedCost"
                                     type="text"
-                                    name="storySummary"
-                                    id="storySummary"
-                                    onChange={handleInputChange}
-                                    defaultValue={inputs.storySummary}
-                                    autoFocus
+                                    inputMode="numeric"
+                                    pattern="[0-9]*"
                                     required
+                                    onChange={handleInputChange}
+                                    defaultValue={inputs.associatedCost}
                                   />
-                                </FormGroup>
-                              </Col>
-                              <Col md={12}>
-                                <FormGroup>
-                                  <Label for="storyDescription">
-                                    Description
-                                  </Label>
-                                  <Input
-                                    type="textarea"
-                                    name="storyDescription"
-                                    id="storyDescription"
-                                    className="textarea"
-                                    onChange={handleInputChange}
-                                    defaultValue={inputs.storyDescription}
-                                    required
-                                  />
-                                </FormGroup>
-                              </Col>
-                              <Col md={6}>
-                                <FormGroup>
-                                  <Label for="storyType">Type</Label>
-                                  <Input
-                                    type="select"
-                                    name="storyType"
-                                    id="storyType"
-                                    onChange={handleInputChange}
-                                    defaultValue=""
-                                    required
-                                  >
-                                    <option value={""} disabled>
-                                      -- Select --
-                                    </option>
-                                    <option value={"enhancement"}>
-                                      Enhancement
-                                    </option>
-                                    <option value={"bugfix"}>Bugfix</option>
-                                    <option value={"development"}>
-                                      Development
-                                    </option>
-                                    <option value={"qa"}>QA</option>
-                                  </Input>
-                                </FormGroup>
-                              </Col>
-                              <Col md={6}>
-                                <FormGroup>
-                                  <Label for="storyComplexity">
-                                    Complexity
-                                  </Label>
-                                  <Input
-                                    type="select"
-                                    name="storyComplexity"
-                                    id="storyComplexity"
-                                    onChange={handleInputChange}
-                                    defaultValue=""
-                                    required
-                                  >
-                                    <option value={""} disabled>
-                                      -- Select --
-                                    </option>
-                                    <option value={"low"}>Low</option>
-                                    <option value={"mid"}>Medium</option>
-                                    <option value={"high"}>High</option>
-                                  </Input>
-                                </FormGroup>
-                              </Col>
-                              <Col md={6}>
-                                <FormGroup>
-                                  <Label for="estimatedTime">
-                                    Estimated Time
-                                  </Label>
-                                  <Input
-                                    type="number"
-                                    name="estimatedTime"
-                                    id="estimatedTime"
-                                    placeholder="in hours"
-                                    required
-                                    onChange={handleInputChange}
-                                    defaultValue={inputs.estimatedTime}
-                                  />
-                                </FormGroup>
-                              </Col>
-                              <Col md={6}>
-                                <FormGroup>
-                                  <Label for="associatedCost">Cost</Label>
-                                  <InputGroup>
-                                    <InputGroupAddon addonType="prepend">
-                                      <InputGroupText>$</InputGroupText>
-                                    </InputGroupAddon>
-                                    <Input
-                                      id="associatedCost"
-                                      name="associatedCost"
-                                      type="text"
-                                      inputMode="numeric"
-                                      pattern="[0-9]*"
-                                      required
-                                      onChange={handleInputChange}
-                                      defaultValue={inputs.associatedCost}
-                                    />
-                                  </InputGroup>
-                                </FormGroup>
-                              </Col>
-                            </Row>
+                                </InputGroup>
+                              </FormGroup>
+                            </Col>
+
                             <Row>
-                              <Col md={6}>
+                              <Col md={12}>
                                 <Button
                                   type="submit"
                                   color="primary"
                                   children="Create Story"
-                                  className=" mb-3"
+                                  size="lg"
+                                  block
                                   disabled={loading || success}
                                 />
                               </Col>
