@@ -4,14 +4,7 @@ import {
   Alert,
   Col,
   Container,
-  Form,
-  FormGroup,
-  Input,
-  InputGroup,
-  InputGroupAddon,
-  InputGroupText,
-  Label,
-  Row,
+  Row
 } from "reactstrap";
 import { Loader, PageTitle } from "../components";
 import { AuthConsumer, useSignUpForm } from "../components/core";
@@ -33,9 +26,7 @@ import {
   TextField,
 } from "@material-ui/core";
 
-const useStyles = makeStyles(() => ({
-  root: {},
-}));
+
 const marks = [
   {
     value: 1,
@@ -112,11 +103,13 @@ const CreateStory = ({ history }) => {
     <AuthConsumer>
       {({ user }) => (
         <Fragment>
+        <PageTitle title="Create a new story" />
           <Container className="create-story">
             <Card>
               {loading && <Loader />}
-
-              <div>
+              
+              {!isAdmin(user.role) ? (
+              
                 <form
                   onSubmit={(e) => createNewStory(e)}
                   autoComplete="off"
@@ -163,6 +156,8 @@ const CreateStory = ({ history }) => {
                           fullWidth
                           label="Type"
                           margin="dense"
+                          name="storyType"
+                          id="storyType"
                           defaultValue=" "
                           name="state"
                           onChange={handleInputChange}
@@ -180,25 +175,33 @@ const CreateStory = ({ history }) => {
                       <Grid item md={6} xs={12}>
                         <TextField
                           fullWidth
-                          label="Complexity"
+                          label="Type"
                           margin="dense"
+                          name="storyComplexity"
+                          id="storyComplexity"
+                          defaultValue=" "
                           name="state"
                           onChange={handleInputChange}
                           required
                           select
                           // eslint-disable-next-line react/jsx-sort-props
-                          SelectProps={{ native: true }}
                           variant="outlined"
-                        ></TextField>
+                        >
+                          <option value={"low"}>Low</option>
+                          <option value={"mid"}>Mid</option>
+                          <option value={"high"}>High</option>
+                        </TextField>
                       </Grid>
                       <Grid item md={6} xs={12}>
                         <Typography id="discrete-slider-always" gutterBottom>
                           Estimated time
                         </Typography>
                         <Slider
-                          defaultValue={80}
+                          defaultValue={20}
                           getAriaValueText={valuetext}
                           aria-labelledby="discrete-slider-always"
+                          name="estimatedTime"
+                          id="estimatedTime"
                           step={10}
                           marks={marks}
                           valueLabelDisplay="on"
@@ -209,6 +212,8 @@ const CreateStory = ({ history }) => {
                           fullWidth
                           label="Cost in $"
                           margin="dense"
+                          id="associatedCost"
+                          name="associatedCost"
                           name="country"
                           onChange={handleInputChange}
                           required
@@ -220,12 +225,47 @@ const CreateStory = ({ history }) => {
                   </CardContent>
                   <Divider />
                   <CardActions>
-                    <Button color="primary" variant="contained">
+                    <Button color="primary" type="submit" variant="contained" disabled={loading || success}>
                       Create Story
                     </Button>
                   </CardActions>
+                  <Row>
+                              <Col>
+                                {error && !success ? (
+                                  <Alert
+                                    color={"danger"}
+                                    className={"mb-4"}
+                                    children={`${
+                                      typeof error === "string"
+                                        ? error
+                                        : "There was an error creating your story, please, try again later."
+                                    }`}
+                                  />
+                                ) : success ? (
+                                  <Alert
+                                    color={"success"}
+                                    className={"mb-4"}
+                                    children={"Story successfully created"}
+                                  />
+                                ) : (
+                                  ""
+                                )}
+                              </Col>
+                            </Row>
                 </form>
-              </div>
+              ) :(
+                <Fragment>
+                            <Alert
+                              color={"danger"}
+                              className={"mb-4"}
+                              children={"Sorry, you cannot create a story"}
+                            />
+                            <span className={"d-none"}>
+                              {setTimeout(() => history.push("/stories"), 2000)}
+                            </span>
+                          </Fragment>
+                        )}
+              
             </Card>
           </Container>
         </Fragment>
